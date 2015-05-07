@@ -10,9 +10,8 @@ def findMaxThreeDigitsMultPalindrom():
   for i in range(100,999):
     for j in range(i,999):
       number = i * j
-      if isPalindrom(str(number)):
-        if number > max[0]:
-          max = (number,i,j)
+      if isPalindrom(str(number)) and number>max[0]:
+        max = (number,i,j)
   return max      
 
 
