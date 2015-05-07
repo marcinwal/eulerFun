@@ -19,7 +19,6 @@ def findPrimeDivisorMaxBest(number):
   counter = 2
   numb = number
   while (counter * counter <= numb):
-    print counter
     if(numb % counter == 0):
       numb = numb/counter
       largest = counter
