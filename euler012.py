@@ -20,7 +20,7 @@ def findPrimeDivisors(number):
   divisors = []
   while n != 1:
     j = 0
-    while (j < len(primes) and n % primes[j] != 0):
+    while (n % primes[j]!=0):
       j += 1
     if not (primes[j] in divisors):
       divisors.append(primes[j])
@@ -68,9 +68,10 @@ def solve(limit):
     number = triangle(n)
     divisors = findPrimeDivisors(number)
     allDivisors = findAllDivisors(divisors,number)
-  return n,allDivisors
+  return n,allDivisors,len(allDivisors)
     
-# findPrimes(500)
-# divisors = findPrimeDivisors(28)
-# print findAllDivisors(divisors,28)
-print solve(500)
+findPrimes(500)
+divisors = findPrimeDivisors(28)
+print divisors
+print findAllDivisors(divisors,28)
+print solve(15)
