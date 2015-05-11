@@ -24,35 +24,34 @@ def multDown(howMany,x,y):
   result = 1
   for i in range (0,howMany):
     result *= tab[x+i][y]
-    print 'down:',x+i,y,result
+    # print 'down:',x+i,y,result
   return result
   
 def multDiagon(howMany,x,y):
   result = 1
   for i in range (0,howMany):
     result *= tab[x+i][y+i]
-    print 'diagonal:',x+i,y+i,result
+    # print 'diagonal:',x+i,y+i,result
   return result  
 
 def multRight(howMany,x,y):
 
-  tmp =  reduce(lambda a,b: a*b, tab[x][y:y+howMany])  
-  print 'right:',tmp
+  tmp =  reduce(lambda a,b: a*b, tab[x][y:y+howMany]) 
   return tmp
 
 
 def four(direction,i,j,howMany):
   size = len(tab)
   if (direction == 1): #down
-    if (i+howMany+1 > size):
+    if (i+howMany > size):
       return 0
     return multDown(howMany,i,j)
   if (direction == 2): #diagonal
-    if (i+howMany+1 > size) or (j+howMany+1 > size):
+    if (i+howMany > size) or (j+howMany > size):
       return 0
     return multDiagon(howMany,i,j)
   if (direction == 3): #right
-    if (j+howMany+1 > size):
+    if (j+howMany > size):
       return 0
     return multRight(howMany,i,j)
 
@@ -60,12 +59,18 @@ def four(direction,i,j,howMany):
 
 
 def maxAdjacentProduct(howMany):
-  maximum = 0
+  maximum = (0,0,0)
   for x in range(0,len(tab)):
     for y in range(0,len(tab)):
-      maximum = max(maximum,four(1,x,y,howMany),four(2,x,y,howMany),four(3,x,y,howMany))
+      down = four(1,x,y,howMany)
+      diagonal = four(2,x,y,howMany)
+      right = four(3,x,y,howMany)
+      print "x:",x,"y:",y,"down:",down,"diagonal:",diagonal,"right:",right
+      tmp = max(down,diagonal,right)
+      if tmp > maximum[0]:
+        maximum = (tmp,x,y)
+      # maximum = (max(tmp,down,diagonal,right)
+      # maximum = max(maximum,four(1,x,y,howMany),,)
   return maximum
 
-
-print tab[19][19]
 print maxAdjacentProduct(4)
