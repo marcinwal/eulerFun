@@ -16,15 +16,17 @@ def findPrimes(howManyPrimes):
     n += 1
 
 def findPrimeDivisors(number):
+  print number
   n = number
   divisors = []
   while n != 1:
     j = 0
-    while (n % primes[j]!=0):
-      j += 1
-    if not (primes[j] in divisors):
-      divisors.append(primes[j])
-    n /= primes[j]
+    while (j < len(primes)):
+      while (n % primes[j]==0):
+        if not (primes[j] in divisors):
+          divisors.append(primes[j])
+        n /= primes[j]
+      j += 1  
   return divisors  
 
 def findAllDivisors(divisors,number):
@@ -71,7 +73,7 @@ def solve(limit):
   return n,allDivisors,len(allDivisors)
     
 findPrimes(500)
-divisors = findPrimeDivisors(28)
+divisors = findPrimeDivisors(primes[1]*primes[2]*primes[3]*primes[4]*primes[2]*primes[9])
 print divisors
-print findAllDivisors(divisors,28)
-print solve(15)
+print findAllDivisors(divisors,primes[1]*primes[2]*primes[3]*primes[4]*primes[2]*primes[9])
+print solve(18)
