@@ -11,8 +11,6 @@ def bruteForce():
   number = 13
   for i in range(14,1000000):
     res = chain(i)
-    print i,res
-
     if (res > max):
       max = res
       number = i
