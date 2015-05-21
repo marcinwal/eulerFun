@@ -17,6 +17,8 @@ def bruteForce():
 
   return(max,number)
 
+
+#dict.keys()
 def withCache(number):
   cache = {}
   cache[1] = 1
