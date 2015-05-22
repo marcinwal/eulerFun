@@ -25,16 +25,26 @@ def solution(number):
   if (inner < 20) and (inner >0):
       text += words[inner]
   elif inner > 0 :
-      text += words[(inner/10)*10]+words[inner%10]
+      text += words[(inner/10)*10]
+      if inner % 10 != 0:
+        text += words[inner%10] 
       
-  return text,len(text),inner
+  return text,len(text),number
 
-def sum1to1000():
+def sum1to(number):
   sum = 0
-  for i in range (1,1001):
-    sum += solution(i)[1]
+  for i in range (1,number+1):
+    result = solution(i)
+    print result
+    sum += result[1]
 
   return sum
 
-print solution(111)
-print sum1to1000()
+def smart():
+  n1_9 =  3 + 3 + 5 + 4 + 4 + 3 + 5 + 5 + 4
+  n10_19 = 3 + 6 + 6 + 8 + 8 + 7 + 7 +9 + 8 + 8
+  n20_99 = 10*(6 + 6 + 5 + 5 + 5 + 7 + 6 + 6) + 8 * n1_9
+  n100_1000 = n1_9 * 100 + 9 * (n1_9 + n10_19 + n20_99) + 7 * 9 + 9 * 99 * 10 
+
+# print solution(11)
+print sum1to(1000)
