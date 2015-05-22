@@ -22,12 +22,19 @@ def solution(number):
       inner %= divisor 
       text += words[1]+words[result*divisor]        
 
-  if inner < 20:
+  if (inner < 20) and (inner >0):
       text += words[inner]
-  else:
+  elif inner > 0 :
       text += words[(inner/10)*10]+words[inner%10]
       
   return text,len(text),inner
 
-print solution(919)
+def sum1to1000():
+  sum = 0
+  for i in range (1,1001):
+    sum += solution(i)[1]
 
+  return sum
+
+print solution(111)
+print sum1to1000()
