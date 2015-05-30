@@ -50,10 +50,5 @@ def maxis(input,output):
       else:
         output[i][j] = input[i][j]+max(output[i+1][j],output[i+1][j+1])
 
-
-# print len(test)
-# print maxis(test,testmaxis)
-# print testmaxis
-
 print maxis(triangle,maxisTable)
 print maxisTable
