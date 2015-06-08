@@ -9,9 +9,16 @@
 # And on leap years, twenty-nine.
 # A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.
 # How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
-import time #just for checking 
+import datetime #just for checking 
 
-def daysBetween(date1,date2):
-  return date1 - date2
+def howManySundays():
+  sundays = 0
+  for year in range(1901,2001):
+    for month in range(1,13):
+      candidate = datetime.date(year,month,1)
+      if candidate.weekday() == 6:
+        sundays += 1
+  return sundays      
 
-print (time.strftime("%d/%m/%Y"))
+
+print howManySundays()
